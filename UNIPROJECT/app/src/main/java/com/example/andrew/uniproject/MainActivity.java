@@ -2,6 +2,8 @@ package com.example.andrew.uniproject;
 
 import android.app.SearchManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +27,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -40,8 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Get button listeners
         impListeners();
 
-        //Get sample data
-        getData();
+        getLoc(FALSE);
     }
 
     //Class to implement buttons and listeners
@@ -66,10 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void getData() {
-
-        // TODO Get current data and append
-        // TODO Get only favourite location data and display here
+    private void getData(String coords) {
 
         //Define the textview
         final TextView tv = findViewById(R.id.tvMain);
@@ -79,7 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Construct the URL
         String params = "/?exclude=minutely,daily,alerts,flags,currently";
-        final String url = "https://api.darksky.net/forecast/76b1650153d418cc29f93e1772252381/57.1497,2.0943" + params;
+        String location = "/" + coords;
+        final String url = "https://api.darksky.net/forecast/76b1650153d418cc29f93e1772252381" + location + params;
 
         // Create a JSONObj request for the url with params defined above
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -132,6 +134,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Add JsonObjectRequest to the RequestQueue
         queue.add(jsonObjectRequest);
+    }
+
+    private void getLoc(boolean all){
+
+        // TODO Change code so these 2 functions work for showing only default loc on mainactivity and all locations on SeeAllActivity
+
+        final TextView tv = findViewById(R.id.tvMain);
+
+        //Create array for storage
+        String[] locations = new String[9];
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        //Only get primary location if parameter is false
+        if(all == FALSE) {
+            String loc1 = sharedPref.getString("PrimaryLoc", null);
+            getData(loc1);
+
+        //Else get all locations
+        } else {
+
+            //Get primary location and store in array
+            String loc1 = sharedPref.getString("PrimaryLoc", null);
+            tv.append(loc1 + "\n");
+
+            //Loop through remaining 9 locations and append to array
+            for(int i=0;i <= 8;i++){
+                //Construct the string on each loop
+                String location = "loc" + i;
+                String key = "Loc" + i;
+                String def = "null";
+
+                //Append each preference to the locations array
+                location = sharedPref.getString(key, def);
+                locations[i] = location;
+
+                //Get data for each location
+                getData(locations[i].toString());
+                }
+        }
+
     }
 }
 

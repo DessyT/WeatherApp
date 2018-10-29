@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    //Preferences
+
+    <EditTextPreference
+        android:key="PrimaryLoc"
+        android:title="Primary Location"
+        android:summary="Enter coordinates of your primary location"
+        />
+
+    <EditTextPreference
+        android:key="Loc0"
+        android:title="Location 2"
+        android:summary="Enter coordinates for location 2"
+        />
+
+    <EditTextPreference
+        android:key="Loc1"
+        android:title="Location 3"
+        android:summary="Enter coordinates for location 3"
+        />
+
+    <EditTextPreference
+        android:key="Loc2"
+        android:title="Location 4"
+        android:summary="Enter coordinates for location 4"
+        />
+
+    <EditTextPreference
+        android:key="Loc3"
+        android:title="Location 5"
+        android:summary="Enter coordinates for location 5"
+        />
+
+    <EditTextPreference
+        android:key="Loc4"
+        android:title="Location 6"
+        android:summary="Enter coordinates for location 6"
+        />
+
+    <EditTextPreference
+        android:key="Loc5"
+        android:title="Location 7"
+        android:summary="Enter coordinates for location 7"
+        />
+
+    <EditTextPreference
+        android:key="Loc6"
+        android:title="Location 8"
+        android:summary="Enter coordinates for location 8"
+        />
+
+    <EditTextPreference
+        android:key="Loc7"
+        android:title="Location 9"
+        android:summary="Enter coordinates for location 9"
+        />
+
+    <EditTextPreference
+        android:key="Loc8"
+        android:title="Location 10"
+        android:summary="Enter coordinates for location 10"
+        />
+
+</PreferenceScreen>

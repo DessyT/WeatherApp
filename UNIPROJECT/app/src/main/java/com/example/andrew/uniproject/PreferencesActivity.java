@@ -9,5 +9,8 @@ public class PreferencesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
+
+        //Display the fragment as the main content
+        getSupportFragmentManager().beginTransaction().replace(android.R.id.content, new AppPreferencesFragment()).commit();
     }
 }
