@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">UNIPROJECT</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="Weclome">Welcome to the new greatest weather app!</string>
+    <string name="Welcome2">Press Enter to proceed!</string>
+    <string name="btnEnter">Enter</string>
+    <string name="txtMainIntro">Here is the curent weather for</string>
+    <string name="btnSeeAll">See All Forecasts!</string>
+    <string name="btnSearch">Search through forecasts!</string>
+    <string name="btnSearch2">Search!</string>
+    <string name="btnPrefs">Preferences</string>
+    <string name="txtSeeAll">Choose the location you would like to see a full forecast for!</string>
+    <string name="txtLoc">Please select your preferred locations</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+</resources>
